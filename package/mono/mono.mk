@@ -27,6 +27,13 @@ MONO_CONF_OPT = --disable-gtk-doc \
 	--disable-mcs-build \
 	--disable-boehm
 
+# As suggested by
+# http://www.mono-project.com/docs/about-mono/releases/4.0.0/ for musl
+# support.
+ifeq ($(BR2_TOOLCHAIN_USES_MUSL),y)
+MONO_CONF_OPTS += --disable-boehm --without-sigaltstack
+endif
+
 define MONO_INSTALL_LIBS
 	rsync -av --exclude=*.so --exclude=*.mdb \
 		$(HOST_DIR)/usr/lib/mono $(TARGET_DIR)/usr/lib/

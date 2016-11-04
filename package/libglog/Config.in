@@ -4,7 +4,7 @@ config BR2_PACKAGE_LIBGLOG
 	help
 	  Logging library for C++
 
-	  http://code.google.com/p/google-glog/
+	  https://github.com/google/glog/
 
 comment "libglog needs a toolchain w/ C++"
 	depends on !BR2_INSTALL_LIBSTDCPP

@@ -58,6 +58,11 @@ domainseparator=$(if $(1),$(1),/)
 # github(user,package,version): returns site of github repository
 github = https://github.com/$(1)/$(2)/archive/$(3)
 
+# Expressly do not check hashes for those files
+# Exported variables default to immediately expanded in some versions of
+# make, but we need it to be recursively-epxanded, so explicitly assign it.
+export BR_NO_CHECK_HASH_FOR =
+
 ################################################################################
 # The DOWNLOAD_* helpers are in charge of getting a working copy
 # of the source repository for their corresponding SCM,
